@@ -13,10 +13,10 @@ def new_turn():
     if(verify_token != WEBHOOK_TOKEN):
         return jsonify({'status': 'bad token'}), 401
     try:
-        # content = request.json
-        steam_name = request['value2']
-        turn_number = request['value3']
-        game_name = request['value1']
+        content = request.json
+        steam_name = content['value2']
+        turn_number = content['value3']
+        game_name = content['value1']
         discord_name = steam_name
         if(steam_name in USER_LIST):
             discord_name = '<@' + USER_LIST[steam_name] + '>'
